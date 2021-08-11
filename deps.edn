@@ -1,0 +1,12 @@
+{:deps {org.clojure/clojure {:mvn/version "1.10.3"}}
+ :paths ["src"]
+ :aliases {;; Works via clj -M:cover-cli
+           :cover-cli {:extra-paths ["test"]
+                       :extra-deps {lambdaisland/kaocha {:mvn/version "1.0.861"}
+                                    lambdaisland/kaocha-cloverage {:mvn/version "1.0.75"}}
+                       :main-opts ["-m" "kaocha.runner" "--plugin" "cloverage"]}
+           ;; Does not work via clj -M:cover-repl
+           :cover-repl {:extra-paths ["test"]
+                        :extra-deps {lambdaisland/kaocha {:mvn/version "1.0.861"}
+                                     lambdaisland/kaocha-cloverage {:mvn/version "1.0.75"}}
+                        :main-opts ["-m" "runner"]}}}
